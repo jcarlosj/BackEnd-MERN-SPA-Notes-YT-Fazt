@@ -4,7 +4,7 @@
   "description": "MERN: Project BackEnd - Notes App",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon src/index.js"
   },
   "author": "Juan Carlos Jiménez Gutiérrez <jcjimenez29@misena.edu.co>",
   "license": "ISC",
@@ -13,5 +13,8 @@
     "dotenv": "^8.1.0",
     "express": "^4.17.1",
     "mongoose": "^5.6.12"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.2"
   }
 }
