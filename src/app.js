@@ -10,8 +10,8 @@ app .use( cors() );                                 // Habilita el Cross-origin 
 app .use( express .json() );                        // Analiza las solicitudes entrantes con cargas JSON
 
 // Routes
-app .get( '/api/notes', ( request, response ) => response .send( 'API Notes' ) );
-app .get( '/api/users', ( request, response ) => response .send( 'API Users' ) );
+app .use( '/api/notes', require( './routes/notes' ) );
+app .use( '/api/users', require( './routes/users' ) );
 
 // Export Modulo Express
 module .exports = app;
