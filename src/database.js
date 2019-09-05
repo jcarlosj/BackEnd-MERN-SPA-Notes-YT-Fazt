@@ -1,5 +1,9 @@
 const mongoose = require( 'mongoose' ),             // Importa paquete 'mongoose' (ORM) para MongoDB
-      URI = 'mongodb://localhost/mern-stack';       // 'mern-stack': Nombre de la base de datos (se creará si no existe)
+      URI = process .env .MONGODB_URI               // 'process': Objeto global de Node
+        ? process .env .MONGODB_URI                 //    En el root del proyecto se debe crear el archivo .env con las variables de entorno deseadas (No debe agregarse al repositorio por seguridad)
+        : 'mongodb://localhost/mern-stack-test';      
+
+console .log( 'URI', URI );
 
 // Conexión a una instancia o servidor de MongoDB
 mongoose .connect( URI, {
