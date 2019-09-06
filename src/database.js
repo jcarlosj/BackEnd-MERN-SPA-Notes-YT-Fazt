@@ -9,6 +9,7 @@ console .log( 'URI', URI );
 mongoose .connect( URI, {
     useCreateIndex: true,       // Falso por defecto. Configurado para truehacer que la compilación de índice predeterminada de Mongoose se use en createIndex()
     useNewUrlParser: true,      // Bandera para permitir a los usuarios recurrir al antiguo analizador (Controlador DB MongoDB)
+    useFindAndModify: false     // Configurado para false hacer findOneAndUpdate() y findOneAndRemove() usar nativo en findOneAndUpdate() lugar de findAndModify()
 });
 
 const connection = mongoose .connection;

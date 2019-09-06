@@ -42,7 +42,7 @@ notesController .updateNote = async ( request, response ) => {
     console .log( request .params .id );     // Recibe el parámetro ID de la URL
     const { author, title, content } = request .body;
 
-    const note = await Note .findByIdAndUpdate( request .params .id, {
+    const note = await Note .findOneAndUpdate( request .params .id, {
         title: title,       // Forma clasica de asignar un valor
         author,             // Forma ES6
         content,
