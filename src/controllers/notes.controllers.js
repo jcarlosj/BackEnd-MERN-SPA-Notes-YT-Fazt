@@ -38,7 +38,18 @@ notesController .getNote = async ( request, response ) => {
     response .json( note );
 }
 
-notesController .updateNote = ( request, response ) => response .json({ message: 'PUT (ID) - API Notes' });
+notesController .updateNote = async ( request, response ) => {
+    console .log( request .params .id );     // Recibe el parámetro ID de la URL
+    const { author, title, content } = request .body;
+
+    const note = await Note .findByIdAndUpdate( request .params .id, {
+        title: title,       // Forma clasica de asignar un valor
+        author,             // Forma ES6
+        content,
+    });
+    console .log( note );
+    response .json({ message: 'Note Updated' });
+}
 
 notesController .deleteNote = async ( request, response ) => {
     console .log( request .params .id );     // Recibe el parámetro ID de la URL
