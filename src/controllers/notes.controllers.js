@@ -37,7 +37,16 @@ notesController .getNote = async ( request, response ) => {
     console .log( note );
     response .json( note );
 }
+
 notesController .updateNote = ( request, response ) => response .json({ message: 'PUT (ID) - API Notes' });
-notesController .deleteNote = ( request, response ) => response .json({ message: 'DELETE (ID) - API Notes' })
+
+notesController .deleteNote = async ( request, response ) => {
+    console .log( request .params .id );     // Recibe el parámetro ID de la URL
+
+    const note = await Note .findByIdAndDelete( request .params .id );
+    console .log( note );
+    response .json({ message: 'Note Deleted' });
+}
+
 
 module .exports = notesController;
