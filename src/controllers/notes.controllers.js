@@ -8,6 +8,7 @@ notesController .getNotes = async( request, response ) => {
     const notes = await Note .find();   // Es una operación Asincrona por lo que se puede usar: un callback, una Promesa o en este último caso convertir nuestra funcion en una funcion asincrona
     response .json( notes );
 }
+
 notesController .createNote = async ( request, response ) => {
     console .log( 'Enviado por el Cliente', request .body );      // Representa los datos que envia el 'cliente'
 
@@ -29,7 +30,13 @@ notesController .createNote = async ( request, response ) => {
     response .json({ message: 'Note Saved' });
 }
 
-notesController .getNote = ( request, response ) => response .json({ message: 'GET (ID) - API Note' });
+notesController .getNote = async ( request, response ) => {
+    console .log( request .params .id );     // Recibe el parámetro ID de la URL
+
+    const note = await Note .findById( request .params .id );
+    console .log( note );
+    response .json( note );
+}
 notesController .updateNote = ( request, response ) => response .json({ message: 'PUT (ID) - API Notes' });
 notesController .deleteNote = ( request, response ) => response .json({ message: 'DELETE (ID) - API Notes' })
 
