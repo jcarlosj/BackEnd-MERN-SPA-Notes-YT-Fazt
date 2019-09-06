@@ -8,7 +8,11 @@ const noteSchema = new Schema({
         type: String,       // Tipo String
         required: true      // Requerido / Obligatorio
     },  
-    author: String          // Tipo String
+    author: String,         // Tipo String
+    date: {
+        type: Date,         // Tipo Date (Fecha)
+        default: Date .now  // Por defecto guarda la fecha actual
+    }
 }, {
     timestamps: true        // Crea la fecha de creación y la fecha de actualización 
 });
