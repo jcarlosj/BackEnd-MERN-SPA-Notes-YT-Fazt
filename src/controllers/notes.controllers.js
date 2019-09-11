@@ -40,12 +40,13 @@ notesController .getNote = async ( request, response ) => {
 
 notesController .updateNote = async ( request, response ) => {
     console .log( request .params .id );     // Recibe el parámetro ID de la URL
-    const { author, title, content } = request .body;
+    const { author, title, content, date } = request .body;
 
     const note = await Note .findOneAndUpdate( request .params .id, {
         title: title,       // Forma clasica de asignar un valor
         author,             // Forma ES6
         content,
+        date
     });
     console .log( note );
     response .json({ message: 'Note Updated' });
